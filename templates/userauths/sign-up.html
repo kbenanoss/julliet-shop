@@ -1,0 +1,87 @@
+{% extends 'partials/base.html' %}
+
+
+{% block content %}
+
+<div class="page-wrapper">
+			<div class="page-content">
+				<!--start breadcrumb-->
+				<section class="py-3 border-bottom border-top d-none d-md-flex bg-light">
+					<div class="container">
+						<div class="page-breadcrumb d-flex align-items-center">
+							<h3 class="breadcrumb-title pe-3">Sign Up</h3>
+							<div class="ms-auto">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb mb-0 p-0">
+										<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
+										</li>
+										<li class="breadcrumb-item"><a href="javascript:;">Authentication</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">Sign Up</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!--end breadcrumb-->
+				<!--start shop cart-->
+				<section class="py-0 py-lg-5">
+					<div class="container">
+						<div class="section-authentication-signin d-flex align-items-center justify-content-center my-5">
+							<div class="row row-cols-1 row-cols-lg-1 row-cols-xl-2">
+								<div class="col mx-auto">
+									<div class="card mb-0">
+										<div class="card-body">
+											<div class="border p-4 rounded">
+												<div class="text-center">
+													<h3 class="">Sign Up</h3>
+													<p>Already have an account? <a href="authentication-login.html">Sign in here</a>
+													</p>
+												</div>
+												{% if form.errors %}
+                                                <div class="alert alert-danger">
+                                                    <strong>{{form.errors}}</strong>
+                                                </div>
+                                                {% endif %}
+												<div class="login-separater text-center mb-4"> <span>OR SIGN UP WITH EMAIL</span>
+													<hr/>
+												</div>
+												<div class="form-body">
+													<form class="row g-3" method="POST">
+                                                        {% csrf_token %}
+                                                        <div class="col-12">
+															{{form.username}}
+														</div>
+                                                        <div class="col-12">
+															{{form.email}}
+														</div>
+                                                        <div class="col-12">
+															{{form.phone}}
+														</div>
+                                                        <div class="col-12">
+															{{form.password1}}
+														</div>
+                                                        <div class="col-12">
+															{{form.password2}}
+														</div>
+                                                        <div class="col-12">
+															<div class="d-grid">
+																<button type="submit" class="btn btn-dark"><i class='bx bx-user'></i>Sign up</button>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--end row-->
+						</div>
+					</div>
+				</section>
+				<!--end shop cart-->
+			</div>
+		</div>
+{% endblock content %}
