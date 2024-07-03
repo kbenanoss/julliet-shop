@@ -1,0 +1,8 @@
+julliet-env/
+julliet-env
+env
+env/
+venv/
+venv
+db.sqlite3
+staticfiles
