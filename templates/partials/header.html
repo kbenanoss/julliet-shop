@@ -1,3 +1,4 @@
+{% load static %}
 <div class="header-wrapper">
     <div class="top-menu">
         <div class="container">
@@ -73,8 +74,8 @@
                             <i class="bx bx-menu"></i>
                         </div>
                         <div class="logo">
-                            <a href="index.html">
-                                <img src="assets/images/logo-icon.png" class="logo-icon" alt="" />
+                            <a href="{% url 'core:index' %}">
+                                <img src="{% static 'assets/images/logo-icon.png' %}" class="logo-icon" alt="" />
                             </a>
                         </div>
                     </div>
@@ -287,7 +288,7 @@
                 <div class="offcanvas-body primary-menu">
                     <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="tv-shows.html"
@@ -429,10 +430,17 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="authentication-login.html">Login</a></li>
-                                <li><a class="dropdown-item" href="authentication-register.html">Register</a>
-                                </li>
-                                <li><a class="dropdown-item" href="authentication-reset-password.html">Password</a></li>
+                                <!-- <li><a class="dropdown-item" href="{% url 'userauths:sign-in' %}">Login</a></li>
+                                <li><a class="dropdown-item" href="{% url 'userauths:sign-up' %}">Register</a>
+                                </li> -->
+                                <!-- <li><a class="dropdown-item" href="authentication-reset-password.html">Password</a></li> -->
+                                
+                                {% if request.user.is_authenticated %}
+                                    <li><a class="dropdown-item" href="{% url 'userauths:sign-out' %}">Logout</a></li>       
+                                {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'userauths:sign-in' %}">Login</a></li>
+                                {% endif %}
+
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
